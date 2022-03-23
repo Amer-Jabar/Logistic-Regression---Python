@@ -19,7 +19,8 @@ w0 = 0
 eta = 0.01
 epochs = 20
 
-w1, w0, loss_hist = execute_lr(x, y, len(x), eta, w1, w0)
+loss_hist = []
+w1, w0, loss_hist = execute_lr(x, y, len(x), eta, w1, w0, loss_hist)
 
 # plt.scatter(x, y,  = y)
 plt.plot(range(len(loss_hist)), loss_hist)

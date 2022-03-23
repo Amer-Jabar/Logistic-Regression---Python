@@ -39,7 +39,8 @@ def execute_lr(x, y, data_size, eta, w1, w0, loss_hist = []):
     slope = gradient(x, y, pred, data_size)
     w1 = update(w1, eta, slope)
     w0 = update(w0, eta, slope)
-        
+
     return w1, w0, loss_hist
+
 
 
