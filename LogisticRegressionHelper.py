@@ -32,15 +32,14 @@ def update(weight, eta, gradient):
     weight -= gradient
     return weight
 
-def train(x, y, data_size, eta, w1, w0, epochs):
-    cost_hist = []
-    
-    for loop in range(epochs):
-        pred = predict(x, w1, w0)
-        cost = cross_entropy(data_size, y, pred)
-        cost_hist.append(cost)
-        slope = gradient(x, y, pred, data_size)
-        w1 = update(w1, eta, slope)
-        w0 = update(w0, eta, slope)
+def execute_lr(x, y, data_size, eta, w1, w0, loss_hist = []):    
+    pred = predict(x, w1, w0)
+    cost = cross_entropy(data_size, y, pred)
+    loss_hist.append(cost)
+    slope = gradient(x, y, pred, data_size)
+    w1 = update(w1, eta, slope)
+    w0 = update(w0, eta, slope)
         
-    return w1, w0, cost_hist
+    return w1, w0, loss_hist
+
+

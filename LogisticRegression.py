@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.datasets import load_iris, load_boston
-from LogisticRegressionHelper import train, predict
+from LogisticRegressionHelper import execute_lr, predict
 
 x = np.array([
     1, 2, 3, 4, 1, 2, 4, 3, 4, 5, 1, 2, 3, 4, 2, 3, 2, 3, 1, 4, 5, 6, 3, 1, 4, 1, 1, 2, 3, 5,
@@ -19,7 +19,8 @@ w0 = 0
 eta = 0.01
 epochs = 20
 
-w1, w0, cost_hist = train(x, y, data_size, eta, w1, w0, epochs)
+w1, w0, loss_hist = execute_lr(x, y, len(x), eta, w1, w0)
 
 # plt.scatter(x, y,  = y)
-plt.plot(range(epochs), cost_hist)
+plt.plot(range(len(loss_hist)), loss_hist)
+
