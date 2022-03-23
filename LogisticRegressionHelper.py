@@ -1,14 +1,15 @@
 import numpy as np
 
-
 def sigmoid(z):
-  return 1.0 / (1 + np.exp(-z))
+    z = z.astype('float64')
+    return 1.0 / (1 + np.exp(-z))
 
 def predict(x, w1, w0):
     if str(type(x)) == "<class 'int'>" or str(type(x)) == "<class 'float'>":
         raise TypeError('Type must be a list-like')
     if type(x) != 'numpy.ndarray':
         x = np.array(x)
+        
     return sigmoid(w1 * x + w0)
 
 def cross_entropy(data_size, y, pred):

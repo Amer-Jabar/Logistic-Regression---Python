@@ -3,24 +3,23 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn.datasets import load_iris
-from LogisticRegressionHelper import train
+import pandas as pd
+from sklearn.datasets import load_iris, load_boston
+from LogisticRegressionHelper import train, predict
 
-dataset = load_iris()
-data = dataset['data']
-target = dataset['target'][:100]
-x = np.array(data[:100, 2])
-y = np.array(target)
+x = np.array([
+    1, 2, 3, 4, 1, 2, 4, 3, 4, 5, 1, 2, 3, 4, 2, 3, 2, 3, 1, 4, 5, 6, 3, 1, 4, 1, 1, 2, 3, 5,
+    12, 14, 13, 10, 11, 12, 11, 10, 13, 14, 12, 10, 10, 12, 10, 13, 12, 14, 12, 11, 10, 10, 14, 12, 13, 10, 11, 10, 14, 14,
+])
+y = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 data_size = len(x)
 
-w1 = 0.5
-w0 = 0.5
+w1 = 0
+w0 = 0
 eta = 0.01
-epochs = 1000
+epochs = 20
 
 w1, w0, cost_hist = train(x, y, data_size, eta, w1, w0, epochs)
 
-# plt.scatter(x, y, c = y)
+# plt.scatter(x, y,  = y)
 plt.plot(range(epochs), cost_hist)
-
-
